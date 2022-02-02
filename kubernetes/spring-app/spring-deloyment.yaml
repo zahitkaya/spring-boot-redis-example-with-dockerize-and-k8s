@@ -18,7 +18,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: REDIS_HOST
-              value: 10.105.8.152 #my cluster ip
+              value: $(REDIS_SERVICE_SERVICE_HOST) #my cluster ip it coming from my pod's environment
           ports:
             - containerPort: 5555
       restartPolicy: Always
