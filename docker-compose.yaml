@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  app:
+    #build: .
+    image: spring-boot-redis-example_app:latest #local image from dockerfile
+    ports:
+      - 5555:5555
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379

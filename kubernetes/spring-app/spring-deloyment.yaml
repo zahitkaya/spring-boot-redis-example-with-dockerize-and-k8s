@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+  labels:
+    app: spring-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: spring-app
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-app
+          image: spring-redis-example:latest #local image from dockerfile
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REDIS_HOST
+              value: 10.105.8.152 #my cluster ip
+          ports:
+            - containerPort: 5555
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: spring-app
